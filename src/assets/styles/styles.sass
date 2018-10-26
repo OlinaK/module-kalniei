@@ -1,0 +1,93 @@
+@import 'colors.sass'
+@import 'typography.sass'
+
+html
+  overflow: hidden
+  body
+    overflow: hidden
+
+*, *:before, *:after
+  -webkit-tap-highlight-color: rgba(0,0,0,0)
+  box-sizing: border-box
+  vertical-align: top
+  padding: 0
+  margin: 0
+  -webkit-font-smoothing: antialiased
+
+*:focus
+	outline: 0
+
+a
+  text-decoration: none
+
+img
+  max-width: 100%
+
+.is
+  &-success
+    color: $col-green
+
+  &-warning
+    color: $col-warning
+
+  &-error
+    color: $col-error
+
+.text-align
+  &-left
+    text-align: left
+  &-right
+    text-align: right
+
+  &-center
+    text-align: center
+
+.float
+  &-right
+    float: right
+
+  &-left
+    float: left
+
+.button
+  border-radius: 4px
+  cursor: pointer
+
+.button__send
+    border: 0
+    &:hover
+      background-color: $col-green-hover
+
+.button__action
+    border: 1px solid $col-grey
+    &:hover
+      background-color: $col-light-grey
+
+.input-wrapper
+  border-radius: 4px
+  border: 1px solid $col-grey
+  position: relative
+  display: flex
+  align-items: center
+
+.input
+  width: auto
+  border: 0
+
+@mixin padding-map($padding-map)
+    @each $breakpoint, $padding in $padding-map
+        @if $breakpoint == null
+            padding: $padding
+        @else
+            @include breakpoint($breakpoint)
+                padding: $padding
+
+@for $i from 1 through 100
+    $padding_base: (null: $i + 0px, $md: $i/1.5 + 0px, $sm: $i/2 + 0px, $xs: $i/2.5 + 0px);
+    .padding-#{$i}
+        @include padding-map($padding_base)
+
+@for $i from 1 through 100
+  .width-#{$i}
+    width: $i * 1%
+
