@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DonationFormComponent implements OnInit {
 
+  moneyDonated: number = 43;
+
   constructor() { }
 
   ngOnInit() {
