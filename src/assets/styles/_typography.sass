@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800')
 
-
 *
     font-family: 'Open Sans', sans-serif
 
@@ -10,7 +9,15 @@ p
         color: $col-green
         font-weight: 700
 
-// breakpoint mixin
+.text-align
+  &-left
+    text-align: left
+  &-right
+    text-align: right
+
+  &-center
+    text-align: center
+
 @mixin breakpoint($mq01: 0, $mq2: false, $maxmin: max-width)
     @if $mq2 == false
         @media ($maxmin: $mq01)
@@ -19,13 +26,11 @@ p
         @media (min-width: $mq01) and (max-width: $mq2)
             @content;
 
-// breakpoint variables
 $lg: 1170px;
 $md: 1024px;
 $sm: 640px;
 $xs: 480px;
 
-// responsive font size mixin
 @mixin font-size-map($font-size-map)
     @each $breakpoint, $font-size in $font-size-map
         @if $breakpoint == null
