@@ -13,6 +13,8 @@ export class DonationFormComponent implements OnInit {
   donationAmount: number = 0;
   peopleDonated: number;
   showReasons: boolean = false;
+  donationSent: boolean = false;
+  hasError: boolean = false;
 
   reasonsMessage: string = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque facilis quibusdam soluta suscipit quia praesentium adipisci necessitatibus enim qui aperiam, ratione ullam? Eius impedit tempora nemo quas quidem blanditiis aliquam!'
 
@@ -20,11 +22,18 @@ export class DonationFormComponent implements OnInit {
     public storageService: StorageService,
   ) { }
 
+  checkValidation() {
+    this.hasError = this.donationAmount <= 0
+  }
+
   donateMoney() {
+    this.checkValidation();
+    if (this.hasError) return
     this.peopleDonated ++;
     this.moneyRecievedTotal = this.moneyRecievedTotal + this.donationAmount;
     this.donationAmount = 0;
     this.saveToSessionStorage();
+    this.donationSent = true;
   }
 
   saveToSessionStorage() {

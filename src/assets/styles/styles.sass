@@ -23,16 +23,6 @@ a
 img
   max-width: 100%
 
-.is
-  &-success
-    color: $col-green
-
-  &-warning
-    color: $col-warning
-
-  &-error
-    color: $col-error
-
 .text-align
   &-left
     text-align: left
@@ -69,6 +59,8 @@ img
   position: relative
   display: flex
   align-items: center
+  &.error
+    border: 1px solid $col-error
 
 .input
   width: auto

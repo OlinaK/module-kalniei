@@ -7,7 +7,7 @@ import { StorageService } from '../../storage.service';
   styleUrls: ['./donation-actions.component.sass']
 })
 export class DonationActionsComponent implements OnInit {
-
+  savedState: boolean= false;
   constructor(
     public storageService: StorageService,
   ) { }
@@ -18,6 +18,8 @@ export class DonationActionsComponent implements OnInit {
 
     this.storageService.localStorageSet('totalDonation', moneyRecievedTotal);
     this.storageService.localStorageSet('totalPeople', peopleDonated);
+
+    this.savedState = true;
   }
 
   ngOnInit() {

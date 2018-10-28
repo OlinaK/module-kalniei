@@ -2,3 +2,5 @@
   <button class="padding-10 text-grey font-size-2 width-46 background-light-light-grey font-weight-600 button button__action" (click)="saveForLater()">Save for later</button>
   <a class="padding-10 text-grey font-size-2 width-46 background-light-light-grey font-weight-600 button button__action text-align-center" href="mailto:?subject=Donate for a cool module that I've made&body=Ok, so here is body, now what?">Tell your friends</a>
 </div>
+
+<app-message-model *ngIf="savedState" [message]="'The form is saved for later!'" [autoClose]="true" [isSuccess]="true" (closed)="savedState = !$event"></app-message-model>

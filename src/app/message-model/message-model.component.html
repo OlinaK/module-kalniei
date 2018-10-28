@@ -1,6 +1,5 @@
-<div class="message-modal">
-  <div class="message-modal-content">
-    <span class="message-modal-close">&times;</span>
-    <p>{{message}}</p>
+<div class="background-shadow" (click)="closed.emit(true)"></div>
+  <div class="message-content padding-20 width-80">
+    <span class="message-content-close text-grey font-size-4 font-weight-700" (click)="closed.emit(true)">&times;</span>
+    <p class="text-grey font-size text-align-center" [ngClass]="{'success': isSuccess}">{{message}}</p>
   </div>
-</div>

@@ -5,7 +5,10 @@
     font-family: 'Open Sans', sans-serif
 
 p
-    padding-bottom: 16px
+    margin: 16px 0
+    &.success
+        color: $col-green
+        font-weight: 700
 
 // breakpoint mixin
 @mixin breakpoint($mq01: 0, $mq2: false, $maxmin: max-width)
