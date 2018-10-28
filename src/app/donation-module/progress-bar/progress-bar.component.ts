@@ -7,16 +7,14 @@ const GOAL_MONEY = 500;
 })
 export class ProgressBarComponent implements OnInit, OnChanges {
 
-  @Input() moneyDonated: number;
+  @Input() moneyRecievedTotal: number;
   progressValue: number = 0;
-  moneyRecievedTotal: number = 0;
   goalAchieved: boolean = false;
   moneyLeft: number = 0;
 
   constructor() { }
 
   moneyCalculate(): void {
-    this.moneyRecievedTotal = 57 + this.moneyDonated;
     if (GOAL_MONEY > this.moneyRecievedTotal) {
       this.progressValue = (100 * this.moneyRecievedTotal) / GOAL_MONEY;
       this.moneyLeft = GOAL_MONEY - this.moneyRecievedTotal;
@@ -30,7 +28,7 @@ export class ProgressBarComponent implements OnInit, OnChanges {
     this.moneyCalculate();
   }
 
-  ngOnChanges() {
+  ngOnChanges() {    
     this.moneyCalculate();
   }
 

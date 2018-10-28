@@ -1,18 +1,25 @@
-<app-progress-bar [moneyDonated]="moneyDonated"></app-progress-bar>
+<app-progress-bar [moneyRecievedTotal]="moneyRecievedTotal"></app-progress-bar>
 <div class="donation-form padding-32">
   <div class="donation-form__details">
-    <p class="text-grey font-size-1"><strong class="text-orange font-weight-700"> Only 3 days left</strong> to fund this project.</p>
-    <p class="text-grey font-size-1">Join the <strong class="font-weight-700">42</strong> other donors who have already supported the project. Every dollar helps.</p>
+    <p class="text-grey font-size-1"><strong class="text-orange font-weight-700"> Only 3 days left</strong> to fund
+      this project.</p>
+    <p class="text-grey font-size-1">Join the <strong class="font-weight-700">{{peopleDonated}}</strong> other donors
+      who have already supported the project. Every dollar helps.</p>
   </div>
   <div class="donation-form__input">
     <div class="input-wrapper width-46 padding-10">
-        <span class="input__icon text-grey font-size-4 font-weight-600 width-20">$</span>
-        <input class="text-black font-size-4 font-weight-600  width-80 input input__foricon" type="number">
+      <span class="input__icon text-grey font-size-4 font-weight-600 width-20">$</span>
+      <input class="text-black font-size-4 font-weight-600  width-80 input input__foricon" type="number" min="0"
+        [(ngModel)]="donationAmount">
     </div>
 
-    <button class="padding-10 text-white font-size-3 width-46 background-green font-weight-600 button button__send">Give Now</button>
+    <button class="padding-10 text-white font-size-3 width-46 background-green font-weight-600 button button__send"
+      (click)="donateMoney()">Give Now</button>
   </div>
   <div class="donation-form__info">
-    <span class="donation-form__info-click text-blue-info font-size-1 font-weight-600"><i>Why give $50?</i></span>
+    <span class="donation-form__info-click text-blue-info font-size-1 font-weight-600" (click)="showReasons = true"><i>Why
+        give $50?</i></span>
   </div>
 </div>
+
+<app-message-model *ngIf="showReasons" [message]="reasonsMessage"></app-message-model>

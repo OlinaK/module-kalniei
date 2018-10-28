@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StorageService } from '../../storage.service';
 
 @Component({
   selector: 'app-donation-actions',
@@ -7,7 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DonationActionsComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public storageService: StorageService,
+  ) { }
+
+  saveForLater() {
+    const moneyRecievedTotal = this.storageService.sessionStorageGet('totalDonation');
+    const peopleDonated = this.storageService.sessionStorageGet('totalPeople');
+
+    this.storageService.localStorageSet('totalDonation', moneyRecievedTotal);
+    this.storageService.localStorageSet('totalPeople', peopleDonated);
+  }
 
   ngOnInit() {
   }
